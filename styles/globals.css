@@ -1,0 +1,115 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  /* Fututa Light */
+  @font-face {
+    font-family: "Futura";
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+    src: url("fonts/Futura\ Light\ font.ttf") format("truetype");
+  }
+  
+  /* Fututra Condensed Light */
+  @font-face {
+    font-family: "Futura";
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+    src: url("fonts/Futura-CondensedLight.otf") format("truetype");
+  }
+  
+/* Futura Book or Regular */
+  @font-face {
+    font-family: "Futura";
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url("fonts/Futura\ Book\ font.ttf") format("truetype");
+  }
+  
+  /* Futura Medium */
+  @font-face {
+    font-family: "Futura";
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+    src: url("fonts/futura\ medium\ bt.ttf") format("truetype");
+  }
+  
+  /* Futura Bold Condensed */
+  @font-face {
+    font-family: "Futura";
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    src: url("fonts/Futura\ Heavy\ font.ttf") format("truetype");
+  }
+  
+  /* Futura Heavy */
+  @font-face {
+    font-family: "Futura";
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+    src: url("fonts/Futura\ Extra\ Black\ font.ttf") format("truetype");
+  }
+  
+  .scroll-down {
+    writing-mode: vertical-rl;
+  }
+
+  ul > li {
+    list-style-type: none;
+  }
+
+
+  @media screen and (min-width: 120em) {
+    .input-class-phone {
+      height: 4rem !important;
+    }
+  }
+  
+  .intl-tel-input input {
+    width: 100%;
+    min-width: 0px;
+    outline: none;
+    position: relative;
+    appearance: none;
+    transition: all 0.2s;
+    font-size: var(--chakra-fontSizes-xs);
+    padding-inline-start: var(--chakra-space-4);
+    padding-inline-end: var(--chakra-space-4);
+    height: var(--chakra-sizes-12);
+    /* border-radius: 10px; */
+    border-bottom: 1px solid #BDBDBD;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    background: inherit;
+    padding-top: var(--chakra-space-2);
+    border-width: 1px;
+    background-color: var(--chakra-colors-white);
+  }
+  
+  .intl-tel-input.allow-dropdown .country-list {
+    position: relative;
+    z-index: 3 !important;
+  }
+  
+  .intl-tel-input.allow-dropdown .selected-flag {
+    padding-bottom: 5px;
+    padding-left: 14px;
+  }
+  
+  .intl-tel-input.allow-dropdown .selected-flag:hover {
+    background-color: transparent !important;
+  }
+  
+  @media screen and (min-width: 62em) {
+    .intl-tel-input input {
+      font-size: var(--chakra-fontSizes-sm);
+    }
+  }
+

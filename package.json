@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "lint": "next lint",
-    "start": "next start -H 0.0.0.0 -p ${PORT:-8080}"
+    "start": "next start"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.4.9",

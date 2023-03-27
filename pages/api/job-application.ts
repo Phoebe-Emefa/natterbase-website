@@ -3,6 +3,7 @@ import { emailHtmlTemplate } from "@/templates/project";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { withMiddleware } from "@/lib/upload";
 import { mailOptions, transporter } from "@/config/nodemailer";
+import { CustomApiRequest } from "./start-project";
 
 type Data = {
   message?: string;
@@ -45,7 +46,7 @@ const generateEmailContent = (data: any) => {
   };
 };
 
-const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+const handler = async (req: CustomApiRequest, res: NextApiResponse<Data>) => {
   if (req.method === "POST") {
     const data = req.body;
 
@@ -54,13 +55,14 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
         ...mailOptions,
         ...generateEmailContent(data),
         subject: data.subject,
-        attachments: [
-          {
-            filename: "Uploaded Resume",
-            // @ts-ignore
-            path: req.file.path,
-          },
-        ],
+        attachments: req?.file
+          ? [
+              {
+                filename: req?.file?.originalname,
+                path: req?.file?.path,
+              },
+            ]
+          : undefined,
       });
       return res.status(200).json({ success: true });
     } catch (error: any) {

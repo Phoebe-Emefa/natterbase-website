@@ -10,6 +10,10 @@ type Data = {
   success?: boolean;
 };
 
+export interface CustomApiRequest extends NextApiRequest {
+  file?: any;
+}
+
 const messageFields = {
   subject: "Subject",
   fullName: "Full Name",
@@ -69,7 +73,7 @@ const generateEmailContent = (data: any) => {
   };
 };
 
-const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+const handler = async (req: CustomApiRequest, res: NextApiResponse<Data>) => {
   if (req.method === "POST") {
     const data = req.body;
 
@@ -90,13 +94,14 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
         ...mailOptions,
         ...generateEmailContent(data),
         subject: data.subject,
-        attachments: [
-          {
-            filename: "Uploaded Resume",
-            // @ts-ignore
-            path: req?.file?.path ? req?.file?.path : null,
-          },
-        ],
+        attachments: req?.file
+          ? [
+              {
+                filename: req?.file?.originalname,
+                path: req?.file?.path,
+              },
+            ]
+          : undefined,
       });
       return res.status(200).json({ success: true });
     } catch (error: any) {

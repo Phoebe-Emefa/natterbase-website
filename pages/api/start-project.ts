@@ -1,4 +1,3 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { emailHtmlTemplate } from "@/templates/project";
 import type { NextApiRequest, NextApiResponse } from "next";
 import _, { isEmpty } from "lodash";
